@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>TomPCConfigurator</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+    h1 { color: #333; }
+    label, select, input { display: block; margin: 10px 0; }
+    #summary { background: #fff; padding: 15px; border-radius: 8px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+  <h1>TomPCConfigurator</h1>
+  <p>Vytvoř si vlastní TomPC konfiguraci – čistě pro zábavu!</p>
+
+  <form id="configForm">
+    <label for="cpu">TomCPU:</label>
+    <select id="cpu">
+      <option value="TomCPU Lite (4C/8T)">TomCPU Lite – 4 jader / 8 vláken</option>
+      <option value="TomCPU Pro (16C/32T)">TomCPU Pro – 16 jader / 32 vláken</option>
+      <option value="TomCPU Ultra (64C/128T)">TomCPU Ultra – 64 jader / 128 vláken</option>
+    </select>
+
+    <label for="ram">TomRAM:</label>
+    <select id="ram">
+      <option value="8 GB DDR5">8 GB DDR5</option>
+      <option value="16 GB DDR5">16 GB DDR5</option>
+      <option value="32 GB DDR5">32 GB DDR5</option>
+      <option value="64 GB DDR5">64 GB DDR5</option>
+    </select>
+
+    <label for="storage">Úložiště:</label>
+    <select id="storage">
+      <option value="TomSSD 512 GB">TomSSD 512 GB</option>
+      <option value="TomSSD 1 TB">TomSSD 1 TB</option>
+      <option value="TomHDD 1 TB + TomSSD 512 GB">TomHDD 1 TB + TomSSD 512 GB</option>
+    </select>
+
+    <label for="gpu">Grafika:</label>
+    <select id="gpu">
+      <option value="Integrovaná 4K TomGPU">Integrovaná 4K TomGPU</option>
+      <option value="Dedikovaná TomGPU Max 16GB">Dedikovaná TomGPU Max 16GB</option>
+    </select>
+
+    <label for="case">Skříň:</label>
+    <select id="case">
+      <option value="TomCase Mini">TomCase Mini</option>
+      <option value="TomCase Optiplex průhledná">TomCase Optiplex s průhlednou bočnicí</option>
+      <option value="TomCase RGB Tower">TomCase RGB Tower</option>
+    </select>
+
+    <input type="button" value="Zobrazit sestavu" onclick="generateSummary()">
+  </form>
+
+  <div id="summary"></div>
+
+  <script>
+    function generateSummary() {
+      const cpu = document.getElementById('cpu').value;
+      const ram = document.getElementById('ram').value;
+      const storage = document.getElementById('storage').value;
+      const gpu = document.getElementById('gpu').value;
+      const pcCase = document.getElementById('case').value;
+
+      const summary = `
+        <h2>🎉 Tvoje TomPC sestava:</h2>
+        <ul>
+          <li><strong>CPU:</strong> ${cpu}</li>
+          <li><strong>RAM:</strong> ${ram}</li>
+          <li><strong>Úložiště:</strong> ${storage}</li>
+          <li><strong>Grafika:</strong> ${gpu}</li>
+          <li><strong>Skříň:</strong> ${pcCase}</li>
+        </ul>
+        <p><em>Tato sestava není k prodeji – jen pro zábavu a inspiraci. 😄</em></p>
+      `;
+
+      document.getElementById('summary').innerHTML = summary;
+    }
+  </script>
+
+</body>
+</html>
